@@ -254,14 +254,65 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.9</version>
         </dependency>
-        
-        
 
+		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib-ext-spring -->
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib-ext-spring</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
+		<!--<dependency>-->
+			<!--<groupId>net.sf.json-lib</groupId>-->
+			<!--<artifactId>json-lib</artifactId>-->
+			<!--<version>2.4</version>-->
+		<!--</dependency>-->
 
 	</dependencies>
 
 
 	<build>
 		<finalName>mayikeji</finalName>
+
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.7.0</version>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+			<executions>
+				<!-- 替换会被 maven 特别处理的 default-compile -->
+				<execution>
+					<id>default-compile</id>
+					<phase>none</phase>
+				</execution>
+				<!-- 替换会被 maven 特别处理的 default-testCompile -->
+				<execution>
+					<id>default-testCompile</id>
+					<phase>none</phase>
+				</execution>
+				<execution>
+					<id>java-compile</id>
+					<phase>compile</phase>
+					<goals>
+						<goal>compile</goal>
+					</goals>
+				</execution>
+				<execution>
+					<id>java-test-compile</id>
+					<phase>test-compile</phase>
+					<goals>
+						<goal>testCompile</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
 	</build>
+
 </project>
